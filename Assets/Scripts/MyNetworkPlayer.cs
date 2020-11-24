@@ -34,6 +34,8 @@ public class MyNetworkPlayer : NetworkBehaviour
     [Command]
     private void CmdSetDisplayName(string newDisplayName)
     {
+        if(newDisplayName.Length < 2 || newDisplayName.Length > 20) { return; }
+
         RpcLogNewName(newDisplayName);
         
         SetDisplayName(newDisplayName);
@@ -57,7 +59,7 @@ public class MyNetworkPlayer : NetworkBehaviour
     [ContextMenu("Set My Name")]
     private void SetMyName()
     {
-        CmdSetDisplayName("My New Name");
+        CmdSetDisplayName("M");
     }
 
     [ClientRpc]
